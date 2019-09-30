@@ -1,2 +1,2 @@
 # Undergrad
-All stuff that I did in my undergrad
+Projects That I have worked on during my time as an undergraduate.
