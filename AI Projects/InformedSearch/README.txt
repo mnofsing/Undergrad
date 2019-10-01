@@ -1,0 +1,1 @@
+This is an informed search script that parses through a grid of values and finds the shortest path to the goal.
