@@ -1,11 +1,27 @@
 # -*- coding: utf-8 -*-
 """
-Created on Tue Sep 24 13:11:35 2019
+@author: Matthew Nofsinger
+This is an Informed search that I wrote during my undergraduate degree at UNC Charlotte.
 
-@author: nofse
+This file requires a grid of numbers formatted as shown below. 
+It will use a user specified search algorithm(Greedy/A*)
+to find the path with the lowest cost as determined by each algorithm.
+GRID EX:
+1 5 2 4 1 5 1 0 4 0
+1 5 0 2 4 1 0 2 5 0
+1 0 0 5 1 2 1 4 4 3
+2 0 0 2 0 0 2 4 4 0
+2 0 4 2 2 1 1 5 1 2
+0 3 4 0 0 3 4 2 1 3
+1 0 3 0 0 5 1 0 4 3
+2 4 0 0 0 2 4 0 0 0
+0 4 5 5 2 5 3 0 4 3
+3 0 3 3 5 5 3 4 1 1
 """
 import heapq
 
+
+#Node Class designed to hold a location value, parent value, hueristic value, and a value used in A* comparisons.
 class Node:
     def __init__(self,value,parent):
         self.value = value
@@ -15,36 +31,30 @@ class Node:
         self.f = 0 #A* 
         self.Astar = True
         print("NODE CREATED")
-        print(self)
-    def push(self,theList):
+        print(self)       
+    def push(self,theList):                     #push function for greedy
         heapq.heappush(theList,(self.h,self))
-    def pushA(self,theList):
+    def pushA(self,theList):                    #push function for A*
         heapq.heappush(theList,(self.f,self))
-    def __lt__(self,other):
+    def __lt__(self,other):                     #override default heapq comparator
         if (self.Astar == True):
             return self.f <= other.f
         else:
             return self.h <= other.h
-def readGrid(filename):
-	#print('In readGrid')
+        
+def readGrid(filename):                         #reads the raw GRID.txt file and returns a 2D array representing the grid	
 	grid = []
 	with open(filename) as f:
 		for l in f.readlines():
-			grid.append([int(x) for x in l.split()])
-	
+			grid.append([int(x) for x in l.split()])	
 	f.close()
 	print('Exiting readGrid')
 	return grid
 
 
-def outputGrid(grid, start, goal, path):
-	#print('In outputGrid')
+def outputGrid(grid, start, goal, path):        #outputs the path found to path.txt
 	filenameStr = 'path.txt'
-
-	# Open filename
 	f = open(filenameStr, 'w')
-
-	# Mark the start and goal points
 	grid[start[0]][start[1]] = 'S'
 	grid[goal[0]][goal[1]] = 'G'
 
@@ -71,14 +81,15 @@ def outputGrid(grid, start, goal, path):
 	f.close()
 	
 
-def heuristic(goal,newNode):#distance between created node and goal location
+#hueristic value calculated using the Manhatten Distance method
+def heuristic(goal,newNode):      
     dist = abs(goal[0] - newNode.value[0]) + abs(goal[1] - newNode.value[1])
     return dist
 
 
     
     
-
+# greedy search algorithm
 def greedy(grid,start,goal):    
     nodesExpanded = 0
     startNode = Node(start,'Source')                        
@@ -118,14 +129,14 @@ def greedy(grid,start,goal):
     
     
     
-    
+    #function to compute the value used in A*
 def ACompute(nodeHval,node,grid,current):
     tempHval = nodeHval
     node.g = current.g + grid[node.value[0]][node.value[1]]
     fVal = tempHval + node.g
     return fVal
 
-
+#A* search method
 def searchASTAR(grid,start,goal):
     nodesExpanded = 0
     startNode = Node(start,'Source')                        
@@ -162,13 +173,23 @@ def searchASTAR(grid,start,goal):
         current = heapq.heappop(openList)[1]
     
     
-    
-def informedSearch():
-    print('stub')
+   #function that manages switching between the search algorithms 
+def informedSearch(grid,start,goal):
+    temp = True
+    while temp:
+        searchType = str(input("WHAT TYPE OF SEARCH DO YOU WANT TO DO? Enter 0(Greedy) or 1(A*) \n"))
+        if (searchType == '0'):
+            greedy(grid,start,goal)
+            temp = False
+        elif(searchType == '1'):
+            searchASTAR(grid,start,goal)
+            temp = False
+        else:
+            print('ERROR: SEARCH TYPE WAS MISKEYED')
 
 
 
-
+#reads neighboring locations of given node
 def getNeighbors(location,grid):
     print('GETTING NEIGHBORS OF:')
     print(location)
@@ -191,18 +212,21 @@ def getNeighbors(location,grid):
         result.append(right)
     return result
 
+#takes the values from getNeighbors and checks them against the goal and returns a list
 def expandNode(currentNode,Olist,Clist,grid,goal):
     print('EXPANDING NODES')
     result = getNeighbors(currentNode,grid)
     expanded = []
     for location in result:
         if (location == goal):
-            print('EXPANDENODE FOUND GOAL')
+            print('EXPANDE NODE FOUND GOAL')
             expanded.append(location)
             break
         else:
             expanded.append(location)
     return expanded
+
+#function to set the path
 def setPath(current,nodesExpanded):
     print('PRINTING PATH')
     path = [current.value]
@@ -217,17 +241,23 @@ def setPath(current,nodesExpanded):
         else:
             print(current.parent.value)
             path.append(current.parent.value)
+            
             current = current.parent
 
-    
+    #main
 def main():
     print('IN MAIN')
     grid = readGrid('GRID.txt')
     print(grid)
-    start = [1,1]
-    goal =  [4,4]
+    s1 = int(input('ENTER THE Y VALUE YOU WISH TO START AT \n'))
+    s2 = int(input('ENTER THE X VALUE YOU WISH TO START AT \n'))
+    g1 = int(input('ENTER THE Y VALUE YOU WISH TO END AT \n'))
+    g2 = int(input('ENTER THE X VALUE YOU WISH TO END AT \n'))
+    start = [s1,s2]
+    goal = [g1,g2]
     #greedy(grid,start,goal)
-    searchASTAR(grid,start,goal)
+    #searchASTAR(grid,start,goal)
+    informedSearch(grid,start,goal)
     print('DONE')
 
 
