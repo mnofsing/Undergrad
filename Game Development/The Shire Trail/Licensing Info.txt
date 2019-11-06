@@ -1,5 +1,5 @@
 This project was completed by Allie Beckman, Brandon Sheng, Matthew McNeil,
-and Matthew Nofsinger for Intro the Game design and Development I at UNC Charlotte.
+and Matthew Nofsinger for Intro to Game design and Development I at UNC Charlotte.
 
 
 Provided below are the resources used to create the project.
