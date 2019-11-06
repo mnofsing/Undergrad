@@ -1,0 +1,69 @@
+This project was completed by Allie Beckman, Brandon Sheng, Matthew McNeil,
+and Matthew Nofsinger for Intro the Game design and Development I at UNC Charlotte.
+
+
+Provided below are the resources used to create the project.
+Refer to the licenising policies of each individual asset if you wish to use them. 
+
+Sound
+Coin 
+https://www.youtube.com/watch?v=qfx6yf8pux4
+Salve
+
+https://www.youtube.com/watch?v=1haqk8fNL3Y
+Orc attack 
+
+http://www.mediafire.com/file/138uugnw17ikufy/Predator_Sound_Effects_%2528free%2529.wav/file
+
+Arrow 
+https://www.youtube.com/watch?v=r3pAgUdcU9c
+
+Sound loses
+(241) WAH WAH WAH FAIL (sound effect) - YouTube
+
+Sound win
+https://www.youtube.com/watch?v=5nolT_jkaVs
+Nature
+https://www.youtube.com/watch?v=9LfEyxl_f-U
+Theme song 
+https://www.youtube.com/watch?v=1iYEwFDLVnM
+Shop
+https://www.youtube.com/watch?v=-JpLcL-9J9w
+winning
+https://www.youtube.com/watch?v=pAy6BfwfSOQ
+
+Horse 
+https://www.youtube.com/watch?v=GRI_Ymc_8Xs
+Horse2 
+https://www.youtube.com/watch?v=DrLdHWMPN8Q
+Pain 
+https://www.youtube.com/watch?v=wp3WPdKAR1Y
+
+Negative button
+https://www.youtube.com/watch?v=FRpq7o1mKXY
+
+Correct 
+https://www.youtube.com/watch?v=iHxrseIqpNk
+
+
+Tilesets
+cave
+https://opengameart.org/content/cave-tileset-0
+RPG tileset
+https://pipoya.itch.io/pipoya-rpg-tileset-32x32
+
+Font
+Aniron
+https://www.fontspace.com/pete-klassen/aniron
+Elven-common-speak
+https://www.fontspace.com/nancy-lorenz/elven-common-speak
+Bilbo Hand
+https://www.fontspace.com/nancy-lorenz/bilbo-hand
+Angerthas
+https://www.fontspace.com/bruce-kvam/angerthas
+Elvish Ring
+https://www.fontspace.com/norfok-incredible-font-design/elvish-ring-nfi
+Morris Roman
+https://www.1001fonts.com/morris-roman-font.html#more
+Kelt + Viking
+http://tolkiengateway.net/wiki/Fonts
